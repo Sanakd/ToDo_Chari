@@ -1,3 +1,32 @@
 <resources>
+    <!-- config -->
+
     <string name="app_name">To Do Chari</string>
+
+
+    <!-- app text -->
+    <string name="hello_msg">
+        Smile _ then
+        Wait A few
+        seconds ;)
+    </string>
+    <string name="scroll_down"><font color='#EA6D45'>Scroll </font>Down To Reach More Users </string>
+    <string name="page_title">To-Do List</string>
+
+    <string name="user_name">John Doe</string>
+    <string name="user_username">\@username</string>
+    <string name="user_email">john_doe@example.com</string>
+
+    <string name="task_id" translatable="false">1</string>
+    <string name="task_title">This a task I should complete</string>
+    <string name="task_state">Completed</string>
+    <string name="image_description"> This is an Avatar of user</string>
+
+    <string name="users">
+        <item>  </item>
+    </string>
+
+    <array name="tasks">
+        <item> </item>
+    </array>
 </resources>
