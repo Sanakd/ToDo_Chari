@@ -2,5 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/lexend</item>
+        <item>@font/lexend_deca</item>
+        <item>@font/lexend_exa</item>
+        <item>@font/lexend_mega</item>
     </array>
 </resources>

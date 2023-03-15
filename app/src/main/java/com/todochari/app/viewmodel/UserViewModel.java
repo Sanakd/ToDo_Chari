@@ -25,7 +25,7 @@ public class UserViewModel extends AndroidViewModel {
         appRepo.insertUser(user);
     }
 
-    public List<User> getUser(){
+    public List<User> getUsers(){
         return appRepo.getUsers();
     }
 }

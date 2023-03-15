@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="349dp"
-        android:layout_height="140dp"
+        android:layout_width="365dp"
+        android:layout_height="165dp"
         android:layout_marginTop="104dp"
-        android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.1"
+        android:fontFamily="@font/lexend_mega"
         android:text="@string/scroll_down"
         android:textColor="@color/second_color"
-        android:textFontWeight="700"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.258"
@@ -28,15 +25,21 @@
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/usersRecyclerView"
         android:layout_width="410dp"
         android:layout_height="406dp"
         android:orientation="vertical"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="0dp"
+        app:layoutManager="GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="1.0"
-        />
+        app:spanCount="2"
+        tools:listitem="@layout/user_card" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ public class Task {
     @PrimaryKey
     int id;
     String title;
-    boolean completed;
+    String completed;
     int userId;
 
     public int getId() {
@@ -28,11 +28,14 @@ public class Task {
         this.title = title;
     }
 
-    public boolean isCompleted() {
+    public String isCompleted() {
         return completed;
     }
 
     public void setCompleted(boolean completed) {
-        this.completed = completed;
+        if(completed == true)
+        this.completed = "completed";
+        else
+            this.completed = "progress";
     }
 }
