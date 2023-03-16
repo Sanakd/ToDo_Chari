@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="user"
@@ -35,7 +36,8 @@
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.048"
-                card_view:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -51,7 +53,8 @@
                 card_view:layout_constraintBottom_toTopOf="@+id/email"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.0"
-                card_view:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/name"
                 card_view:layout_constraintVertical_bias="0.0"
                 tools:ignore="TextContrastCheck" />
@@ -64,7 +67,8 @@
                 android:contentDescription="@string/image_description"
                 card_view:layout_constraintBottom_toTopOf="@+id/name"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintVertical_bias="1.0"
                 tools:ignore="ImageContrastCheck"
@@ -83,7 +87,8 @@
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.0"
-                card_view:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/userAvatar"
                 card_view:layout_constraintVertical_bias="1.0" />
 

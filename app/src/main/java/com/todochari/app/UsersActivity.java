@@ -1,11 +1,12 @@
 package com.todochari.app;
 
+import static java.sql.DriverManager.println;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.todochari.app.adapter.UsersAdapter;
@@ -21,7 +22,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -54,7 +54,7 @@ public class UsersActivity extends AppCompatActivity {
 
         public final String BASE_URL = "https://jsonplaceholder.typicode.com/";
         public final String USERS_END_POINT = "users/";
-        public final String TASKS_END_POINT = "todos";
+        //public final String TASKS_END_POINT = "todos";
 
         String data = "";
 
@@ -63,7 +63,7 @@ public class UsersActivity extends AppCompatActivity {
             super.run();
             try {
                 URL users_url = new URL(BASE_URL+USERS_END_POINT);
-                URL tasks_url = new URL(BASE_URL+TASKS_END_POINT);
+                //URL tasks_url = new URL(BASE_URL+TASKS_END_POINT);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) users_url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
@@ -76,8 +76,8 @@ public class UsersActivity extends AppCompatActivity {
 
                 if(!data.isEmpty()){
                     JSONArray jsonArray = new JSONArray(data);
-
-                    usersList.clear();
+                    println(jsonArray.toString());
+                    //usersList.clear();
                     for(int i = 0; i< jsonArray.length(); i++ ){
                         User user = new User();
 
@@ -94,11 +94,7 @@ public class UsersActivity extends AppCompatActivity {
 
                 }
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
             mainHandler.post(new Runnable() {

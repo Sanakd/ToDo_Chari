@@ -1,38 +1,76 @@
 package com.todochari.app;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
-import com.todochari.app.databinding.ActivityMainBinding;
-import com.todochari.app.viewmodel.UserViewModel;
+import java.util.concurrent.TimeUnit;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-
-import models.User;
 
 public class MainActivity extends AppCompatActivity {
 
+    ProgressBar progressBar;
+    Intent intent;
+    Integer count =1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressBar = this.findViewById(R.id.progressBar);
+        intent = new Intent(this.getApplicationContext(), UsersActivity.class);
+
+        progressBar.setProgress(0);
+        new AsyncProgressBar().execute(10);
+
 
     }
 
 
+    private class AsyncProgressBar extends AsyncTask<Integer, Integer, String>{
+
+
+        @Override
+        protected String doInBackground(Integer... params) {
+            for (; count <= params[0]; count++) {
+                try {
+                    Thread.sleep(1000);
+                    publishProgress(count);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return "Task Completed.";
+
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try {
+                this.finalize();
+                startActivity(intent);
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... progress) {
+            progressBar.setProgress(progress[0]);
+
+        }
+
+
+
+
+    }
 }
