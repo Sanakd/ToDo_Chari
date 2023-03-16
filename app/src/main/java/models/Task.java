@@ -6,10 +6,20 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Task {
+
     @PrimaryKey
     int id;
     String title;
     String completed;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     int userId;
 
     public int getId() {

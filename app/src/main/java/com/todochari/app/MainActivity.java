@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... progress) {
             progressBar.setProgress(progress[0]);
-
         }
 
 

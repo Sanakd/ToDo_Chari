@@ -10,6 +10,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/userCardView"
         android:layout_width="167dp"
         android:layout_height="144dp"
         android:layout_gravity="start"
@@ -19,10 +20,9 @@
         card_view:cardCornerRadius="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainUserCard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            >
+            android:layout_height="match_parent">
 
 
             <TextView
@@ -33,11 +33,11 @@
                 android:text="@{user.name, default=User}"
                 android:textColor="@color/principal_color"
                 android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.048"
-                app:layout_constraintWidth_percent="0.5"
-                app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -50,11 +50,11 @@
                 android:text="@{user.username, default=Username}"
                 android:textColor="@color/text_color"
                 android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
                 card_view:layout_constraintBottom_toTopOf="@+id/email"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintWidth_percent="0.5"
-                app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/name"
                 card_view:layout_constraintVertical_bias="0.0"
                 tools:ignore="TextContrastCheck" />
@@ -65,10 +65,10 @@
                 android:layout_height="43dp"
                 android:layout_marginBottom="12dp"
                 android:contentDescription="@string/image_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
                 card_view:layout_constraintBottom_toTopOf="@+id/name"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintWidth_percent="0.5"
-                app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintVertical_bias="1.0"
                 tools:ignore="ImageContrastCheck"
@@ -84,11 +84,11 @@
                 android:text="@{user.email, default=Email}"
                 android:textColor="@color/second_color"
                 android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintWidth_percent="0.5"
-                app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/userAvatar"
                 card_view:layout_constraintVertical_bias="1.0" />
 

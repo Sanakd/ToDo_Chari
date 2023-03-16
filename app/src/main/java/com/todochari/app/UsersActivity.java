@@ -3,11 +3,18 @@ package com.todochari.app;
 import static java.sql.DriverManager.println;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.todochari.app.adapter.UsersAdapter;
 import com.todochari.app.databinding.UsersBinding;
@@ -29,26 +36,71 @@ import models.User;
 
 public class UsersActivity extends AppCompatActivity {
     private UsersBinding binding;
-    private UserViewModel userViewModel;
     private UsersAdapter usersAdapter;
     ArrayList<User> usersList;
     Handler mainHandler;
     ProgressDialog progressDialog;
+    public static Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = UsersBinding.inflate(getLayoutInflater());
+        usersAdapter = new UsersAdapter();
+        progressDialog = new ProgressDialog(this);
+        usersList = new ArrayList<User>();
+        mainHandler = new Handler();
+        intent = new Intent(this.getApplicationContext(), TasksActivity.class);
+
+
         setContentView(binding.getRoot());
         binding.usersRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        usersAdapter = new UsersAdapter();
+        //userViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(UserViewModel.class);
         binding.usersRecyclerView.setAdapter(usersAdapter);
         new fetchData().start();
-
-        //userViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(UserViewModel.class);
-
         usersAdapter.setUsers(usersList);
+
+
     }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+    }
+
+    /*public void onClick(int userId){
+        cardView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+                Log.d("click", "Ouach! these are their tasks");
+            }
+        });
+
+    }*/
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        CardView cardView;
+
+        public ViewHolder(View itemLayoutView) {
+            super(itemLayoutView);
+            cardView = (CardView) itemLayoutView.findViewById(R.id.userCardView);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+                intent.putExtra("userId", 1);
+                startActivity(intent);
+                Log.d("click", "Ouach! these are their tasks");
+
+        }
+    }
+
+
 
     class fetchData extends Thread{
 
@@ -77,7 +129,7 @@ public class UsersActivity extends AppCompatActivity {
                 if(!data.isEmpty()){
                     JSONArray jsonArray = new JSONArray(data);
                     println(jsonArray.toString());
-                    //usersList.clear();
+                    usersList.clear();
                     for(int i = 0; i< jsonArray.length(); i++ ){
                         User user = new User();
 
@@ -93,11 +145,11 @@ public class UsersActivity extends AppCompatActivity {
                     }
 
                 }
-
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
             mainHandler.post(new Runnable() {
+
                 @Override
                 public void run() {
                     if(progressDialog.isShowing())
@@ -107,4 +159,5 @@ public class UsersActivity extends AppCompatActivity {
             });
         }
     }
+
 }
