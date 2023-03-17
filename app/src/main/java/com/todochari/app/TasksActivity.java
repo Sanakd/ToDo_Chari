@@ -96,19 +96,10 @@ public class TasksActivity extends AppCompatActivity {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                         task.setId(jsonObject.getInt("id"));
-                        //println("__________________________________________________________________");
-                        //println(getString(task.getId()));
-                        //println("__________________________________________________________________");
 
                         task.setTitle(jsonObject.getString("title"));
-                        //println("__________________________________________________________________");
-                        //println(task.getTitle());
-                        //println("__________________________________________________________________");
 
                         task.setCompleted(jsonObject.getBoolean("completed"));
-                        //println("__________________________________________________________________");
-                        //println(task.isCompleted());
-                        //println("__________________________________________________________________");
 
                         task.setUserId(1);
 
@@ -131,4 +122,6 @@ public class TasksActivity extends AppCompatActivity {
             });
         }
     }
+
+    //TODO:use bundle or intent to get userId
 }

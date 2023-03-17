@@ -1,9 +1,13 @@
 package com.todochari.app.adapter;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,13 +53,18 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
+
+
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         UserCardBinding userCardBinding;
+
 
         public ViewHolder(@NonNull UserCardBinding userCardBinding) {
             super(userCardBinding.getRoot());
             this.userCardBinding = userCardBinding;
         }
+
     }
 }

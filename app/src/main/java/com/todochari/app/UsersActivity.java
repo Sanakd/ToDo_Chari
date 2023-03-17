@@ -55,7 +55,7 @@ public class UsersActivity extends AppCompatActivity {
 
 
         setContentView(binding.getRoot());
-        binding.usersRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        binding.usersRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         //userViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(UserViewModel.class);
         binding.usersRecyclerView.setAdapter(usersAdapter);
         new fetchData().start();
@@ -64,22 +64,13 @@ public class UsersActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onPostResume() {
         super.onPostResume();
 
     }
 
-    /*public void onClick(int userId){
-        cardView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                intent.putExtra("userId", userId);
-                startActivity(intent);
-                Log.d("click", "Ouach! these are their tasks");
-            }
-        });
-
-    }*/
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -92,17 +83,16 @@ public class UsersActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-
-                intent.putExtra("userId", 1);
-                startActivity(intent);
-                Log.d("click", "Ouach! these are their tasks");
+            int userId = 1;
+            intent.putExtra("userId", userId);
+            startActivity(intent);
+            Log.d("click", "Ouach! these are their tasks");
 
         }
     }
 
 
-
-    class fetchData extends Thread{
+    class fetchData extends Thread {
 
         public final String BASE_URL = "https://jsonplaceholder.typicode.com/";
         public final String USERS_END_POINT = "users/";
@@ -114,7 +104,7 @@ public class UsersActivity extends AppCompatActivity {
         public void run() {
             super.run();
             try {
-                URL users_url = new URL(BASE_URL+USERS_END_POINT);
+                URL users_url = new URL(BASE_URL + USERS_END_POINT);
                 //URL tasks_url = new URL(BASE_URL+TASKS_END_POINT);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) users_url.openConnection();
@@ -122,15 +112,15 @@ public class UsersActivity extends AppCompatActivity {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 String line;
 
-                while((line = bufferedReader.readLine())!= null){
-                    data = data+line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    data = data + line;
                 }
 
-                if(!data.isEmpty()){
+                if (!data.isEmpty()) {
                     JSONArray jsonArray = new JSONArray(data);
                     println(jsonArray.toString());
                     usersList.clear();
-                    for(int i = 0; i< jsonArray.length(); i++ ){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         User user = new User();
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -152,12 +142,14 @@ public class UsersActivity extends AppCompatActivity {
 
                 @Override
                 public void run() {
-                    if(progressDialog.isShowing())
+                    if (progressDialog.isShowing())
                         progressDialog.dismiss();
                     usersAdapter.notifyDataSetChanged();
                 }
             });
         }
     }
+
+    //TODO: replace view holder to UsersAdapter to rich recycler view item clicked
 
 }
